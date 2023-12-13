@@ -22,9 +22,11 @@ async function run() {
 
         const dbo = client.db(process.env.DATABASE_DB);
 
-        await dbo.createCollection(process.env.COLLECTION);
+        const myObj = { name: "Company Inc", address: "Highway 37" };
 
-        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+        await dbo.collection(process.env.COLLECTION).insertOne(myObj);
+
+        console.log("1 document inserted!");
     } finally {
         await client.close();
     }
