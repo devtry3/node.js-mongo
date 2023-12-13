@@ -22,7 +22,13 @@ async function run() {
 
         const dbo = client.db(process.env.DATABASE_DB);
 
-        const result = await dbo.collection(process.env.COLLECTION).find({}).toArray();
+        const result = await dbo.collection(process.env.COLLECTION).find({}, {
+            projection: {
+                _id: 0,
+                name: 1,
+                address: 1
+            }
+        }).toArray();
 
         console.log(result);
     } finally {
