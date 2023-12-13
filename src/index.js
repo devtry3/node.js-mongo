@@ -22,7 +22,7 @@ async function run() {
 
         const dbo = client.db(process.env.DATABASE_DB);
 
-        await dbo.createCollection("customers");
+        await dbo.createCollection(process.env.COLLECTION);
 
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
