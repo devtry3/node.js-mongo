@@ -20,6 +20,18 @@ async function run() {
     try {
         await client.connect();
 
+        const dbo = client.db("mydb");
+
+        await dbo.createCollection("customers");
+
+        // await dbo.createCollection("customers", function(err, res) {
+        //     if (err) {
+        //         throw err;
+        //     }
+        //
+        //     console.log("Collection created!");
+        // });
+
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
         await client.close();
