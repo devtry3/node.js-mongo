@@ -22,9 +22,9 @@ async function run() {
 
         const dbo = client.db(process.env.DATABASE_DB);
 
-        const query = { address: /^S/ };
+        const mySort = { name: 1 };
 
-        const result = await dbo.collection(process.env.COLLECTION).find(query).toArray();
+        const result = await dbo.collection(process.env.COLLECTION).find().sort(mySort).toArray();
 
         console.log(result);
     } finally {
