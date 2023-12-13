@@ -25,7 +25,6 @@ async function run() {
         const result = await dbo.collection(process.env.COLLECTION).find({}, {
             projection: {
                 _id: 0,
-                name: 1
             }
         }).toArray();
 
