@@ -22,11 +22,9 @@ async function run() {
 
         const dbo = client.db(process.env.DATABASE_DB);
 
-        const myObj = { name: "Company Inc", address: "Highway 37" };
+        const result = await dbo.collection(process.env.COLLECTION).findOne();
 
-        await dbo.collection(process.env.COLLECTION).insertOne(myObj);
-
-        console.log("1 document inserted!");
+        console.log(result);
     } finally {
         await client.close();
     }
